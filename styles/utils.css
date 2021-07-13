@@ -1,0 +1,36 @@
+input,
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+button {
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 0 0.7rem;
+}
+
+.button__primary {
+  background-color: #fff;
+  color: #014283;
+}
+
+.button__secondary {
+  background-color: #014283;
+  color: #fff;
+}
+
+.button__danger {
+  background-color: #f00;
+  color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  button {
+    font-size: 0.9rem;
+    margin: 0 0.3rem;
+  }
+}

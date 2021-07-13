@@ -1,0 +1,105 @@
+.dashboard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  width: 50vw;
+  gap: 1rem;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.dashboard__container > div {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.7rem 0.5rem;
+  display: grid;
+  grid-template-columns: 0.2fr 5fr 0.2fr;
+  align-items: center;
+}
+
+.dashboard__container span {
+  font-size: 1.4rem;
+  color: #000000f1;
+}
+
+.unfilled :nth-child(1) {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.filled :nth-child(1) {
+  height: 25px;
+  width: 25px;
+  background: url('/icons/checkbox.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.filled :nth-child(2) {
+  text-decoration-line: line-through;
+}
+
+.dashboard__container h2 {
+  text-align: left;
+  margin-right: auto;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+
+.pending {
+  background-color: #f53f1f;
+}
+
+.today {
+  background-color: #13a313ce;
+}
+
+.upcoming {
+  background-color: #03a366;
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard__container {
+    width: 90vw;
+    height: 90vh;
+    gap: 1rem;
+    margin-top: 10vh;
+    padding-top: 1rem;
+  }
+
+  .dashboard__container > div {
+    padding: 0.5rem 0.3rem;
+    display: grid;
+    grid-template-columns: 0.7fr 5fr 0.2fr;
+    align-items: center;
+  }
+
+  .dashboard__container span {
+    font-size: 1rem;
+  }
+
+  .unfilled :nth-child(1) {
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+  }
+
+  .filled :nth-child(1) {
+    height: 25px;
+    width: 25px;
+    background: url('/icons/checkbox.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .todo__header {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,103 @@
+.form__container {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  margin: 2rem auto;
+  align-items: center;
+  width: fit-content;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px 1px #1818186c;
+  gap: 1rem;
+  border-radius: 3px;
+  width: 30vw;
+  position: relative;
+}
+
+.form__container > span {
+  color: #fff;
+  padding: 0.3rem 0;
+  text-align: center;
+  background-color: red;
+  position: absolute;
+  inset: 0 0 auto 0;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.form__container h1 {
+  font-size: 2rem;
+  margin-right: auto;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.form__container > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 1px solid #ccc;
+  padding: 0.7rem 0.9rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.form__container label {
+  margin-right: auto;
+  font-size: 1.4rem;
+  color: #000000b6;
+  font-weight: 100;
+}
+
+.form__container input {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: #000000e3;
+  width: 100%;
+}
+
+.form__container img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.form__container .button__grid {
+  border: none !important;
+  justify-content: flex-end !important;
+  padding: 1rem 0 0 0;
+}
+
+@media screen and (max-width: 700px) {
+  .form__container {
+    padding: 0.7rem;
+    margin: 0;
+    gap: 0.5rem;
+    width: 90vw;
+  }
+
+  .form__container > span {
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+  }
+
+  .form__container h1 {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .form__container > div {
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .form__container label {
+    font-size: 1rem;
+  }
+
+  .form__container input {
+    font-size: 1rem;
+    width: 100%;
+  }
+}
