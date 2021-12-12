@@ -6,7 +6,7 @@ button {
 }
 
 button {
-  padding: 0.5rem 0.5rem;
+  padding: 0.7rem 0.9rem;
   border-radius: 5px;
   font-size: 1.2rem;
   cursor: pointer;
@@ -15,16 +15,16 @@ button {
 
 .button__primary {
   background-color: #fff;
-  color: #014283;
+  color: #3f51b5;
 }
 
 .button__secondary {
-  background-color: #014283;
+  background-color: #3f51b5;
   color: #fff;
 }
 
 .button__danger {
-  background-color: #f00;
+  background-color: #f44336;
   color: #fff;
 }
 

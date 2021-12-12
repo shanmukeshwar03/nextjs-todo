@@ -1,83 +1,95 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useRouter } from 'next/router'
-import { delUser } from 'redux/auth'
-import { delLoading, setLoading, setModal } from 'redux/utils'
-import Loading from 'components/Loading'
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { setUser, delUser } from "redux/auth";
+import { delLoading, setLoading, setModal } from "redux/utils";
+import Loading from "components/Loading";
+import axios from "axios";
+
+const AUTH_URL = process.env.AUTH_URL;
 
 const Appbar = () => {
-  const { auth, utils } = useSelector((state) => state)
-  const dispatch = useDispatch()
-  const router = useRouter()
+  const { auth, utils } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const checkLoggedIn = async () => {
+    try {
+      const response = await axios.get(AUTH_URL + "/auth/verifyToken");
+      if (response.data) dispatch(setUser(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+    dispatch(delLoading());
+  };
 
   useEffect(() => {
-    const handleStart = () => dispatch(setLoading())
-    const handleComplete = () => dispatch(delLoading())
+    checkLoggedIn();
 
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
+    const handleStart = () => dispatch(setLoading());
+    const handleComplete = () => dispatch(delLoading());
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
 
     return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-    }
-  }, [])
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+    };
+  }, []);
 
   useEffect(() => {
-    if (auth.token) router.replace('/dashboard')
-    else router.replace('/login')
-  }, [auth.token])
+    if (auth.user) router.replace("/dashboard");
+    else router.replace("/");
+  }, [auth.user]);
 
   const handleClick = (event) => {
     switch (event.target.id) {
-      case '1':
-        dispatch(setModal())
-        break
-      case '2':
-        dispatch(delUser())
-        break
-      case '3':
-        router.push('/login')
-        break
-      case '4':
-        router.push('/register')
-        break
+      case "1":
+        dispatch(setModal());
+        break;
+      case "2":
+        dispatch(delUser());
+        break;
+      case "3":
+        router.push("/login");
+        break;
+      case "4":
+        router.push("/register");
+        break;
 
       default:
-        break
+        break;
     }
-  }
+  };
 
-  if (utils.loading) return <Loading />
+  if (utils.loading) return <Loading />;
 
   return (
-    <div className='appbar__container'>
+    <div className="appbar__container">
       <h1>Todo List</h1>
       <div>
-        {auth.token ? (
+        {auth.user ? (
           <div>
-            <button className='button__primary' id='1' onClick={handleClick}>
+            <button className="button__primary" id="1" onClick={handleClick}>
               Create
             </button>
-            <button className='button__primary' id='2' onClick={handleClick}>
+            <button className="button__primary" id="2" onClick={handleClick}>
               Logout
             </button>
           </div>
         ) : (
-          <div>
-            {router.pathname === '/register' ? (
-              <button className='button__primary' id='3' onClick={handleClick}>
-                Login
-              </button>
-            ) : (
-              <button className='button__primary' id='4' onClick={handleClick}>
-                Register
-              </button>
-            )}
-          </div>
+          <a
+            className="button button-appbar"
+            target="_blank"
+            href="https://auth.shanmukeshwar.me"
+          >
+            Login
+          </a>
         )}
       </div>
     </div>
-  )
-}
-export default Appbar
+  );
+};
+
+export default Appbar;
