@@ -3,6 +3,7 @@ import axios from "axios";
 import Appbar from "components/Appbar";
 import store from "redux/store";
 import "react-datepicker/dist/react-datepicker.css";
+import "styles/index.css";
 import "styles/globals.css";
 import "styles/appbar.css";
 import "styles/form.css";

@@ -32,7 +32,9 @@ const Home = () => {
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English"></meta>
       </Head>
-      <div className="home-container">Please Login to start shrinking urls</div>
+      <div className="home-container">
+        Please Login to start sheduling todos
+      </div>
     </>
   );
 };

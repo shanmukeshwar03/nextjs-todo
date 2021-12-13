@@ -51,12 +51,6 @@ const Appbar = () => {
       case "2":
         dispatch(delUser());
         break;
-      case "3":
-        router.push("/login");
-        break;
-      case "4":
-        router.push("/register");
-        break;
 
       default:
         break;
@@ -74,18 +68,20 @@ const Appbar = () => {
             <button className="button__primary" id="1" onClick={handleClick}>
               Create
             </button>
-            <button className="button__primary" id="2" onClick={handleClick}>
+            <button className="button__danger" id="2" onClick={handleClick}>
               Logout
             </button>
           </div>
         ) : (
-          <a
-            className="button button-appbar"
-            target="_blank"
-            href="https://auth.shanmukeshwar.me"
-          >
-            Login
-          </a>
+          <button className="button__primary">
+            <a
+              className="button button-appbar"
+              target="_blank"
+              href="https://auth.shanmukeshwar.me"
+            >
+              Login
+            </a>
+          </button>
         )}
       </div>
     </div>

@@ -1,15 +1,15 @@
 import Modal from "components/Modal";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { initTodo, updateStatus, updateTodo } from "redux/todo";
+import { initTodo, updateStatus } from "redux/todo";
 import { delLoading, setLoading, setModal, setPayload } from "redux/utils";
 import Todo from "components/Todo";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.BASE_URL + "/";
 
 const Dashboard = () => {
-  const { auth, utils, todo } = useSelector((state) => state);
+  const { utils, todo } = useSelector((state) => state);
   const [pending, setPending] = useState([]);
   const [today, setToday] = useState([]);
   const [later, setLater] = useState([]);
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
   const handleUpdate = async (_id) => {
     try {
-      const response = await axios.patch(BASE_URL + "/" + _id);
+      const response = await axios.patch(BASE_URL + _id);
       if (response.data) dispatch(updateStatus(_id));
     } catch (error) {
       console.log(error);

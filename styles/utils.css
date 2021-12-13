@@ -6,11 +6,11 @@ button {
 }
 
 button {
-  padding: 0.7rem 0.9rem;
+  padding: 0.5rem 0.9rem;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  margin: 0 0.7rem;
+  margin: 0 1rem;
 }
 
 .button__primary {

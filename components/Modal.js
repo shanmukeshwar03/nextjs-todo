@@ -6,7 +6,7 @@ import { delLoading, delModal, setLoading, setModal } from "redux/utils";
 import { delTodo, setTodo, updateTodo } from "redux/todo";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.BASE_URL + "/";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Modal = () => {
   const deleteTodo = async () => {
     dispatch(setLoading());
     try {
-      const response = await axios.delete(BASE_URL + "/" + utils.payload._id);
+      const response = await axios.delete(BASE_URL + utils.payload._id);
       if (response.data) {
         dispatch(delTodo(utils.payload._id));
         dispatch(delModal());
