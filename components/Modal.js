@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { delLoading, delModal, setLoading, setModal } from "redux/utils";
 import { delTodo, setTodo, updateTodo } from "redux/todo";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 const BASE_URL = process.env.BASE_URL + "/";
 
@@ -36,10 +37,9 @@ const Modal = () => {
       const payload = {
         content,
         date: date.toISOString(),
-        _id: utils.payload._id,
-        status: utils.payload.status,
+        client_id: utils.payload.client_id,
       };
-      const response = await axios.patch(BASE_URL, payload);
+      const response = await axios.put(BASE_URL + utils.payload._id, payload);
       if (response.data) {
         dispatch(updateTodo({ ...utils.payload, ...payload }));
         dispatch(delModal());
@@ -53,7 +53,11 @@ const Modal = () => {
   const postTodo = async () => {
     dispatch(setLoading());
     try {
-      const payload = { content, date: date.toISOString() };
+      const payload = {
+        content,
+        client_id: uuidv4(),
+        date: date.toISOString(),
+      };
       const response = await axios.post(BASE_URL, payload);
       if (response.data) {
         dispatch(setTodo({ ...payload, _id: response.data }));

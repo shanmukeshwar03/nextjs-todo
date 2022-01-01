@@ -43,12 +43,17 @@ const Appbar = () => {
     else router.replace("/");
   }, [auth.user]);
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     switch (event.target.id) {
       case "1":
         dispatch(setModal());
         break;
       case "2":
+        try {
+          await axios.get(AUTH_URL + "/auth/logout");
+        } catch (error) {
+          console.log(error);
+        }
         dispatch(delUser());
         break;
 
